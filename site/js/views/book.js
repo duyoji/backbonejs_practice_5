@@ -7,6 +7,10 @@ app.BookView = Backbone.View.extend({
 
     className: 'bookContainer',
 
+    events: {
+        'click .delete': 'deleteBook'
+    },
+
     template: _.template($('#bookTemplate').html()),
 
     render: function() {
@@ -15,5 +19,12 @@ app.BookView = Backbone.View.extend({
         this.$el.html(this.template(this.model.toJSON()));
 
         return this;
+    },
+
+    deleteBook: function() {
+        // モデルを削除します
+        this.model.destroy();
+        // ビューを削除します
+        this.remove();
     }
 });
