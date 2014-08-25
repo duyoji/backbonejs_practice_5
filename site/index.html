@@ -19,27 +19,19 @@
                 <button id="add">追加</button>
             </div>
         </form>
-        <div class="bookContainer">
-            <img src="img/placeholder.png"/>
-            <ul>
-                <li> タイトル</li>
-                <li> 著者</li>
-                <li> 発売日</li>
-                <li> キーワード</li>
-            </ul>
-            <button class="delete">削除</button>
-        </div>
     </div>
 
     <!--template-->
-    <script id="bookTemplate" type="text/template"> <img src="<%= coverImage %>"/>
-    <ul>
-        <li><%= title %></li>
-        <li><%= author %></li>
-        <li><%= releaseDate %></li>
-        <li><%= keywords %></li>
-    </ul>
-    <button class="delete">削除</button> </script>
+    <script id="bookTemplate" type="text/template">
+        <img src="<%= coverImage %>"/>
+        <ul>
+            <li><%= title %></li>
+            <li><%= author %></li>
+            <li><%= releaseDate %></li>
+            <li><%= keywords %></li>
+        </ul>
+        <button class="delete">削除</button>
+    </script>
 
 
     <script src="js/lib/jquery.min.js"></script>
