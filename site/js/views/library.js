@@ -5,9 +5,15 @@ var app = app || {};
 app.LibraryView = Backbone.View.extend({
     el: '#books',
 
+    events: {
+        'click #add': 'addBook'
+    },
+
     initialize: function(initialBooks) {
         this.collection = new app.Library(initialBooks);
         this.render();
+
+        this.listenTo(this.collection, 'add', this.renderBook);
     },
 
     // コレクション内のそれぞれの本について描画処理を呼び出し、
@@ -16,6 +22,17 @@ app.LibraryView = Backbone.View.extend({
         this.collection.each(function(item) {
             this.renderBook(item);
         }, this);
+    },
+
+    addBook: function(e) {
+        e.preventDefault();
+        var formData = {};
+        $('#addBook div').children('input').each(function(i, el) {
+            if ($(el).val() != '') {
+                formData[el.id] = $(el).val();
+            }
+        });
+        this.collection.add(new app.Book(formData));
     },
 
     // BookViewを使い、個々の本を描画します。生成された要素は
